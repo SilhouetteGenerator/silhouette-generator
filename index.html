@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="corporate">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta th:if="${context?.page?.pageContent?.description != null && !context?.page?.pageContent?.description.isEmpty()}"
+          th:content="${context?.page?.pageContent?.description}"
+          name="description"/>
+
+
+    <title th:text="${context?.page?.pageContent?.title != null && !context?.page?.pageContent?.title.isEmpty() ? context?.page?.pageContent?.title : '随机画灵感助手'}"></title>
+
+    <link th:if="${context?.page?.pageContent?.canonical != null && !context?.page?.pageContent?.canonical.isEmpty()}"
+          rel="canonical"
+          th:href="${context?.page?.pageContent?.canonical}"/>
+
+    <!-- 字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <link href="/tools/assets/css/lib/tailwind.min.css" rel="stylesheet">
+    <!-- Daisy UI CSS -->
+    <link href="/tools/assets/css/lib/daisy-full.css" rel="stylesheet" type="text/css"/>
+
+    <!-- AOS Animation -->
+    <link href="/tools/assets/css/lib/aos.css" rel="stylesheet">
+    <!-- 全局样式 -->
+    <link href="/tools/assets/css/index.css?ts=2" rel="stylesheet">
+    <!-- Gallery模块样式 - 新增 -->
+    <link href="/tools/assets/css/gallery.css?ts=1" rel="stylesheet">
+    <!-- 工具组件样式 -->
+    <link href="/tools/assets/css/hero.css?ts=1" rel="stylesheet">
+    <link href="/tools/assets/css/tools/tools.css?ts=1" rel="stylesheet">
+    <link href="/tools/assets/css/tools/vertical.css?ts=1" rel="stylesheet">
+    <link href="/tools/assets/css/tools/alert-dropdown.css?ts=1" rel="stylesheet">
+    <link href="/tools/assets/css/tools/canvas.css?ts=1" rel="stylesheet">
+    <link href="/tools/assets/css/tools/two-button.css?ts=1" rel="stylesheet">
+    <link href="/tools/assets/css/tools/image-uploader.css?ts=1" rel="stylesheet">
+    <link href="/tools/assets/css/tools/flat-dropdown.css?ts=1" rel="stylesheet">
+
+    <!-- 动态资源CSS -->
+    <th:block th:if="${context?.pageModules?.resource?.config?.cssList != null && !context?.pageModules?.resource?.config?.cssList.isEmpty()}">
+        <link th:each="cssUrl : ${context?.pageModules?.resource?.config?.cssList}"
+              th:href="${cssUrl}"
+              rel="stylesheet"
+              th:if="${cssUrl != null && !cssUrl.trim().isEmpty()}">
+    </th:block>
+
+    <!-- Microsoft Clarity - 动态配置 -->
+    <script type="text/javascript" th:if="${context?.website?.siteContent?.clarityId != null && !context?.website?.siteContent?.clarityId.isEmpty()}" th:inline="javascript">
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () {
+                (c[a].q = c[a].q || []).push(arguments)
+            };
+            t = l.createElement(r);
+            t.async = 1;
+            t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0];
+            y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", /*[[${context.website.siteContent.clarityId}]]*/);
+    </script>
+</head>
+<body>
+<!-- 装饰元素容器 -->
+<div class="decorative-elements">
+    <!-- 白色圆形装饰 -->
+    <div class="white-decoration white-decoration-1"></div>
+    <div class="white-decoration white-decoration-3"></div>
+    <div class="white-decoration white-decoration-4"></div>
+    <div class="white-decoration white-decoration-5"></div>
+    <div class="white-decoration white-decoration-6"></div>
+
+    <!-- 彩色背景装饰 -->
+    <div class="color-decoration color-decoration-1"></div>
+    <div class="color-decoration color-decoration-2"></div>
+</div>
+
+<div style="display:none">
+    <!-- Google Analytics - 动态配置 -->
+    <script async th:if="${context?.website?.siteContent?.googleAnalyticsId != null && !context?.website?.siteContent?.googleAnalyticsId.isEmpty()}"
+            th:src="${'https://www.googletagmanager.com/gtag/js?id=' + context.website.siteContent.googleAnalyticsId}"></script>
+    <script th:if="${context?.website?.siteContent?.googleAnalyticsId != null && !context?.website?.siteContent?.googleAnalyticsId.isEmpty()}" th:inline="javascript">
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', /*[[${context.website.siteContent.googleAnalyticsId}]]*/);
+    </script>
+</div>
+<!-- 导航栏 - 桌面版 -->
+<nav class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <!-- 网站 Logo 和标题 -->
+            <div class="flex items-center gap-4">
+                <div class="nav-brand-icon w-10 h-10 rounded-xl shadow-lg bg-gradient-to-br from-green-700 to-green-500 flex items-center justify-center text-white transform rotate-12">
+                    <svg class="w-5 h-5 transform -rotate-12" xmlns="http://www.w3.org/2000/svg" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor">
+                        <use th:href="${context.website.siteContent.icon.url}"></use>
+                    </svg>
+                </div>
+
+                <div>
+                    <h1 class="nav-brand-title text-2xl font-serif font-bold text-green-700"
+                        th:text="${context?.website?.siteContent?.brandName != null ? context.website.siteContent.brandName : '随机画灵感助手'}">
+                    </h1>
+                </div>
+            </div>
+
+            <!-- 桌面导航链接 - 支持二级菜单 -->
+            <div class="hidden md:flex items-center space-x-8"
+                 th:if="${context?.siteModules?.navigation?.config?.items != null}">
+                <div th:each="item : ${context.siteModules.navigation.config.items}" class="relative nav-dropdown">
+                    <!-- 一级菜单 -->
+                    <a th:href="${item.url != null ? item.url : '#'}"
+                       class="nav-link hover:text-green-800 transition duration-300 px-2 py-1 flex items-center font-medium"
+                       th:classappend="${item.url == '#home'} ? 'active' : ''">
+                        [[${item.name}]]
+                        <!-- 下拉箭头 - 仅在有子菜单时显示 -->
+                        <svg th:if="${item.children != null && !item.children.isEmpty()}"
+                             class="ml-1 w-4 h-4 transition-transform duration-200"
+                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </a>
+
+                    <!-- 二级下拉菜单 -->
+                    <div th:if="${item.children != null && !item.children.isEmpty()}"
+                         class="dropdown-menu absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible transform translate-y-2 transition-all duration-200">
+                        <div class="py-2">
+                            <a th:each="child : ${item.children}"
+                               th:href="${child.url != null ? child.url : '#'}"
+                               class="dropdown-item block px-4 py-2 text-sm text-gray-600 hover:bg-green-50 hover:text-green-700 transition-colors duration-200">
+                                [[${child.name}]]
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 移动端按钮 -->
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-green-700 hover:text-green-800 focus:outline-none p-2">
+                    <svg class="w-6 h-6" id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M4 6h16M4 12h16m-7 6h7"/>
+                    </svg>
+                    <svg class="w-6 h-6 hidden" id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 移动导航菜单 - 支持二级菜单 -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-lg"
+         th:if="${context?.siteModules?.navigation?.config?.items != null}">
+        <div class="px-4 py-3 space-y-2">
+            <div th:each="item : ${context.siteModules.navigation.config.items}">
+                <!-- 一级菜单项 -->
+                <div class="mobile-nav-item">
+                    <div class="flex items-center justify-between">
+                        <a th:href="${item.url != null ? item.url : '#'}"
+                           class="flex-1 text-green-700 hover:text-green-800 hover:bg-green-50 py-2 px-4 rounded-lg transition duration-300 font-medium">
+                            [[${item.name}]]
+                        </a>
+                        <!-- 展开/收起按钮 - 仅在有子菜单时显示 -->
+                        <button th:if="${item.children != null && !item.children.isEmpty()}"
+                                class="mobile-submenu-toggle p-2 text-green-600 hover:text-green-800 transition-colors duration-200">
+                            <svg class="w-4 h-4 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg"
+                                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- 二级菜单 -->
+                    <div th:if="${item.children != null && !item.children.isEmpty()}"
+                         class="mobile-submenu hidden pl-4 mt-2 space-y-1 bg-green-50 rounded-lg border-l-3 border-green-200 py-2">
+                        <a th:each="child : ${item.children}"
+                           th:href="${child.url != null ? child.url : '#'}"
+                           class="block text-green-600 hover:text-green-800 hover:bg-green-100 py-2 px-4 rounded-lg transition duration-300 text-sm">
+                            [[${child.name}]]
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="main-container min-h-screen px-4 py-8" id="home">
+    <section id="hero" class="max-w-6xl mx-auto">
+        <div class="hero-banner">
+            <h2 class="hero-title"
+                th:text="${context?.pageModules?.hero?.config?.title ?: 'Free AI Random Image Generator'}">
+                Free AI Random Image Generator
+            </h2>
+            <div class="hero-separator"></div>
+            <p class="hero-subtitle"
+               th:text="${context?.pageModules?.hero?.config?.subtitle ?: 'Unleash your creativity with our free AI random image generator. Create stunning digital art, abstract backgrounds, and concept illustrations with a single click, no artistic skills required!'}">
+                Unleash your creativity with our free AI random image generator. Create stunning digital art,
+                abstract backgrounds, and concept illustrations with a single click, no artistic skills required!
+            </p>
+        </div>
+    </section>
+
+    <!-- 工具部分 - 使用安全检查避免属性不存在错误 -->
+    <section id="tool" class="max-w-6xl mx-auto mb-5 pt-8"
+             th:if="${context != null && context.pageModules != null && (context.pageModules.containsKey('tool') || context.pageModules.containsKey('tools'))}">
+        <!-- 这里的内容将由 Tools.renderTool 函数动态生成 -->
+    </section>
+
+    <!-- 垂直工具部分 - 使用安全检查避免属性不存在错误 -->
+    <section id="vertical-tool-container" class="max-w-6xl mx-auto mb-5 pt-16"
+             th:if="${context != null && context.pageModules != null && (context.pageModules.containsKey('verticalTools') || context.pageModules.containsKey('tools'))}">
+        <!-- 这里的内容将由 Tools.renderTool 函数动态生成 -->
+    </section>
+    <!-- 用户画廊 -->
+    <section id="gallery" class="max-w-6xl mx-auto mb-5 pt-16">
+        <div class="text-center mb-16">
+            <!-- 删除了用户画廊标签，改为与如何使用部分一致的标题样式 -->
+            <h2 class="section-title font-serif" th:text="${context?.pageModules?.gallery?.config?.title}">
+                欣赏创意作品集</h2>
+            <p class="section-description" th:text="${context?.pageModules?.gallery?.config?.subtitle}">
+                浏览其他用户使用随机画灵感助手创作的精选作品，汲取灵感，激发创意</p>
+        </div>
+
+        <!-- 筛选栏 -->
+        <div class="flex flex-wrap justify-center gap-3 mb-10">
+            <!-- 动态生成筛选按钮 -->
+            <button th:each="group, groupStat : ${context?.pageModules?.gallery?.config?.pictureGroup}"
+                    th:text="${group.type}"
+                    th:data-type="${group.type}"
+                    th:class="${groupStat.first ? 'gallery-filter-btn active bg-green-700 text-white px-5 py-2 rounded-full text-sm font-medium transition-all hover:shadow-lg' : 'gallery-filter-btn bg-white text-green-700 px-5 py-2 rounded-full text-sm font-medium transition-all hover:bg-green-50 hover:shadow-md border border-green-200'}">
+            </button>
+        </div>
+
+        <!-- 为每个分组创建单独的网格 -->
+        <div th:each="group, groupStat : ${context?.pageModules?.gallery?.config?.pictureGroup}"
+             th:id="${'gallery-grid-' + group.type}"
+             th:class="${groupStat.first ? 'gallery-grid block' : 'gallery-grid hidden'}"
+             data-aos="fade-up">
+
+            <!-- 动态网格容器 - 根据配置的每行图片数量设置样式 -->
+            <div class="gallery-grid-container"
+                 th:style="${'--gallery-cols-mobile: 1; --gallery-cols-tablet: ' +
+                       (context?.pageModules?.gallery?.config?.rowImageSize > 6 ? 3 :
+                        (context?.pageModules?.gallery?.config?.rowImageSize > 3 ? 2 : 1)) +
+                       '; --gallery-cols-desktop: ' + (context?.pageModules?.gallery?.config?.rowImageSize ?: 2) + ';'}"
+                 th:data-cols="${context?.pageModules?.gallery?.config?.rowImageSize ?: 2}">
+
+                <!-- 这个分组的所有图片 -->
+                <div th:each="picture : ${group.pictures}"
+                     class="gallery-item cursor-pointer"
+                     th:data-image="${picture.imageUrl}"
+                     th:data-title="${picture.title}"
+                     th:data-group="${group.type}">
+
+                    <!-- 只有第一个分组才渲染img标签，其他分组只渲染空容器 -->
+                    <th:block th:if="${groupStat.first}">
+                        <img th:src="${picture.imageUrl}" th:alt="${picture.title}"
+                             class="gallery-image w-full h-72 object-cover rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+                        <div class="gallery-overlay">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm opacity-80"></span>
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                     stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </th:block>
+
+                    <!-- 其他分组：只渲染占位符容器，等待动态加载 -->
+                    <th:block th:unless="${groupStat.first}">
+                        <!-- 空容器，等待JavaScript动态生成img元素 -->
+                        <div class="gallery-placeholder w-full h-72 bg-gray-100 rounded-lg flex items-center justify-center">
+                            <div class="text-gray-400 text-center">
+                                <svg class="w-12 h-12 mx-auto mb-2 opacity-30" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                                <span class="text-sm">Loading...</span>
+                            </div>
+                        </div>
+                    </th:block>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 图片查看器模态框 - 全屏沉浸式优化版 -->
+    <div class="gallery-image-viewer-modal" id="image-viewer-modal">
+        <div class="gallery-modal-box">
+            <!-- 关闭按钮 -->
+            <button class="modal-close-btn" onclick="closeImageViewer()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                     stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+
+            <!-- 图片容器 -->
+            <div class="modal-image-container">
+                <img id="modal-image" src="" alt="" class="">
+
+                <!-- 左箭头 -->
+                <button id="prev-image">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+
+                <!-- 右箭头 -->
+                <button id="next-image">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- 图片信息栏 -->
+            <div class="modal-info-bar">
+                <h3 id="modal-image-title" class="">Title</h3>
+                <div class="modal-info-controls">
+                    <span id="modal-image-counter" class="">1 / 10</span>
+                    <button onclick="downloadImage()" class="modal-download-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                             stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        Download
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--     如何使用 -->
+    <section id="how-to-use" class="max-w-6xl mx-auto  mb-5 pt-16">
+        <div class="text-center mb-16">
+            <h2 class="section-title font-serif"
+                th:text="${context?.pageModules?.howToUse?.config?.title ?: '三步开启你的创意之旅'}">
+                三步开启你的创意之旅</h2>
+            <p class="section-description"
+               th:text="${context?.pageModules?.howToUse?.config?.subtitle ?: '随机画灵感助手操作简单直观，只需简单几步，即可创造出独特的艺术作品'}">
+                随机画灵感助手操作简单直观，只需简单几步，即可创造出独特的艺术作品</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8" data-aos="fade-up">
+            <!-- 步骤项 -->
+            <div th:each="step : ${context?.pageModules?.howToUse?.config?.steps}" class="step-card">
+                <div class="step-number" th:text="${step.stepNumber}">1</div>
+                <h3 class="text-xl font-semibold mb-3 text-gray-800" th:text="${step.title}">步骤标题</h3>
+                <p class="text-gray-600" th:text="${step.description}">
+                    步骤描述
+                </p>
+                <div class="mt-4 flex justify-end">
+                <span class="inline-flex items-center text-sm font-medium text-green-600">
+                    <span th:text="${'第' + step.stepNumber + '步'}">第一步</span>
+                    <svg th:if="${!stepStat.last}" class="ml-1 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                    <svg th:if="${stepStat.last}" class="ml-1 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 用户评价 -->
+    <section id="reviews" class="max-w-6xl mx-auto  mb-5 pt-16">
+        <div class="text-center mb-16">
+            <h2 class="section-title font-serif"
+                th:text="${context?.pageModules?.reviews?.config?.title ?: '创作者们的真实反馈'}">
+                创作者们的真实反馈</h2>
+            <p class="section-description"
+               th:text="${context?.pageModules?.reviews?.config?.subtitle ?: '听听其他用户如何评价随机画灵感助手，以及它如何帮助他们激发创意'}">
+                听听其他用户如何评价随机画灵感助手，以及它如何帮助他们激发创意</p>
+        </div>
+
+        <!-- 评价轮播 -->
+        <div class="review-carousel relative" data-aos="fade-up">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 评价项 -->
+                <div th:each="review : ${context?.pageModules?.reviews?.config?.reviews}"
+                     class="review-card bg-white rounded-xl shadow-soft p-8 hover-lift">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img th:src="${review.avatarUrl}" th:alt="${review.userName + '头像'}"
+                             class="w-12 h-12 rounded-full">
+                        <div>
+                            <h4 class="font-semibold" th:text="${review.userName}">用户名称</h4>
+                            <p class="text-sm text-gray-500" th:text="${review.profession}">职业</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4 text-yellow-400">
+                        <!-- 根据评分显示星星 -->
+                        <i th:each="star : ${#numbers.sequence(1, review.rating)}" class="fas fa-star"></i>
+                        <i th:each="star : ${#numbers.sequence(1, 5 - review.rating)}" class="far fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-3" th:text="${review.content}">
+                        评论内容
+                    </p>
+                    <p class="text-sm text-gray-500" th:text="${review.reviewTime}">评论时间</p>
+                </div>
+            </div>
+
+            <!-- 导航按钮 -->
+            <div class="flex justify-center mt-10 gap-3">
+                <button id="review-prev"
+                        class="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-gray-50 transition-all">
+                    <svg class="w-5 h-5 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <button id="review-next"
+                        class="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-gray-50 transition-all">
+                    <svg class="w-5 h-5 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见问题 -->
+    <section id="faq" class="max-w-6xl mx-auto  mb-5 pt-16">
+        <div class="text-center mb-16">
+            <h2 class="section-title font-serif"
+                th:text="${context?.pageModules?.faq?.config?.title ?: '你可能想了解的问题'}">你可能想了解的问题</h2>
+            <p class="section-description"
+               th:text="${context?.pageModules?.faq?.config?.subtitle ?: '我们收集了用户最常见的疑问，希望能帮助你更好地使用随机画灵感助手'}">
+                我们收集了用户最常见的疑问，希望能帮助你更好地使用随机画灵感助手</p>
+        </div>
+
+        <div class="faq-container" data-aos="fade-up">
+            <!-- FAQ项 -->
+            <div th:each="faqItem, itemStat : ${context?.pageModules?.faq?.config?.faqItems}" class="faq-item">
+                <div class="faq-question">
+                    <h3 class="font-semibold text-lg" th:text="${faqItem.question}">问题标题</h3>
+                    <div class="faq-toggle">
+                        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                             stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <p class="text-gray-600 py-4" th:text="${faqItem.answer}">问题答案</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-24 pt-16 pb-8 bg-white bg-opacity-70 border-t border-green-100 shadow-inner">
+        <div class="max-w-6xl mx-auto px-6">
+            <!-- Footer Main Content -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+                <!-- Friendly Links -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 border-l-4 border-green-600 pl-3">Friendly
+                        Links</h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="https://magicbox.tools/" title="MagicBox.Tools - AI Tools Directory" class="text-green-700 hover:text-green-800 transition-colors">MagicBox.Tools
+                                - AI Tools Diresctory</a>
+                        </li>
+                        <li>
+                            <a href="https://right-ai.com/" title="RightAI Tools Directory" class="text-green-700 hover:text-green-800 transition-colors">
+                                RightAI Tools Diresctory
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://aijustworks.com" title="AI Just Works" class="text-green-700 hover:text-green-800 transition-colors">
+                                AI Just Works
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://AIToolly.com/" title="AIToolly AI Tools Directory" class="text-green-700 hover:text-green-800 transition-colors">AIToolly</a>
+                        </li>
+                        <li>
+                            <a href="https://sprunkid.com/" title="Sprunkid" class="text-green-700 hover:text-green-800 transition-colors">Sprunkid</a>
+                        </li>
+                        <li>
+                            <a href="https://projecthunt.me" class="text-green-700 hover:text-green-800 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="180" height="48" role="img"
+                                     aria-label="Featured on: projecthunt.me"><title>Featured on projecthunt.me</title>
+                                    <g>
+                                        <rect width="180" height="48" rx="4" fill="#FFFFFF" stroke="#E85C0D"
+                                              strokeWidth="1.5"/>
+                                    </g>
+                                    <g transform="translate(10, 8)">
+                                        <image href="https://projecthunt.me/favicon.ico" width="32" height="32"/>
+                                    </g>
+                                    <g fill="#666666" textAnchor="start"
+                                       fontFamily="Verdana,Geneva,DejaVu Sans,sans-serif">
+                                        <text x="50" y="22" fontSize="13" fontWeight="500">Featured on</text>
+                                        <text x="50" y="38" fontSize="14" fontWeight="600" fill="#E85C0D">
+                                            projecthunt.me
+                                        </text>
+                                    </g>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://aistage.net" title="AIStage" class="text-green-700 hover:text-green-800 transition-colors">AIStage</a>
+                        </li>
+                        <li>
+                            <a href="https://alistforai.com/" title="AListForAi" class="text-green-700 hover:text-green-800 transition-colors">AListForAi</a>
+                        </li>
+                        <li>
+                            <a href="https://toolpilot.ai/" title="AListForAi" class="text-green-700 hover:text-green-800 transition-colors">ToolPilot</a>
+                        </li>
+                        <li>
+                            <a href="https://www.ai138.com" title="AI工具网" class="text-green-700 hover:text-green-800 transition-colors"> AI工具网(Ai138.com) | AI工具导航和推荐 –
+                                快速找到最佳AI工具</a>
+                        </li>
+                        <li>
+                            <a title="All The Best AI Tools" href="https://allinai.tools" class="text-green-700 hover:text-green-800 transition-colors">All in AI Tools</a>
+                        </li>
+                        <li>
+                            <a title="108ai" href="https://www.108ai.com/" class="text-green-700 hover:text-green-800 transition-colors">108ai</a>
+                        </li>
+                        <li>
+                            <a href="https://navfolders.com/" title="navfolders" class="text-green-700 hover:text-green-800 transition-colors">navfolders/</a>
+                        </li>
+                        <li>
+                            <a href="https://dang.ai/" target="_blank" class="text-green-700 hover:text-green-800 transition-colors"><img src="https://cdn.prod.website-files.com/63d8afd87da01fb58ea3fbcb/6487e2868c6c8f93b4828827_dang-badge.png" alt="Dang.ai" style="width: 150px; height: 54px;" width="150" height="54"/></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    <div id="back-to-top" class="back-to-top" title="回到顶部">
+        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+             stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+        </svg>
+    </div>
+
+    <!-- Only include tool-config script if the tool module exists -->
+    <script id="tool-config" type="application/json"
+            th:if="${context != null && context.pageModules != null && context.pageModules.containsKey('tool')}"
+            th:utext="${@pageUtils.toJson(context?.pageModules?.tool?.config)}">
+        {}
+    </script>
+    <script id="verticalToolsConfig" type="application/json"
+            th:if="${context != null && context.pageModules != null && context.pageModules.containsKey('verticalTools')}"
+            th:utext="${@pageUtils.toJson(context?.pageModules?.verticalTools?.config)}">
+        {}
+    </script>
+
+    <script src="/tools/assets/js/lib/myUtils.js?ts=1"></script>
+    <script src="/tools/assets/js/lib/aliyun-oss-sdk-6.18.0.min.js"></script>
+
+    <!-- 核心框架 -->
+    <script src="/tools/assets/js/legao/core/tools-core.js?ts=1"></script>
+
+    <!-- 组件文件（顺序可以任意调整） -->
+    <script src="/tools/assets/js/legao/form/alert-dropdown.js?ts=1"></script>
+    <script src="/tools/assets/js/legao/form/text-input.js?ts=1"></script>
+    <script src="/tools/assets/js/legao/form/two-button.js?ts=1"></script>
+    <script src="/tools/assets/js/legao/form/two-tab.js?ts=1"></script>
+    <script src="/tools/assets/js/legao/form/chat-input.js?ts=1"></script>
+    <script src="/tools/assets/js/legao/form/dropdown-group.js?ts=1"></script>
+    <script src="/tools/assets/js/legao/form/image-uploader.js?ts=1"></script>
+    <script src="/tools/assets/js/legao/form/flat-dropdown.js?ts=1"></script>
+
+    <script src="/tools/assets/js/legao/form/canvas.js?ts=1"></script>
+    <script src="/tools/assets/js/legao/form/result-display.js?ts=1"></script>
+
+    <script src="/tools/assets/js/legao/render/horizontal.js?ts=1"></script>
+    <script src="/tools/assets/js/legao/render/vertical.js?ts=1"></script>
+
+    <!-- 公共API和注册（必须最后） -->
+    <script src="/tools/assets/js/legao/core/tools-register.js?ts=1"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
+    <script src="/tools/assets/js/lib/fabricUtils.js"></script>
+
+    <!-- 核心JavaScript -->
+    <script src="/tools/assets/js/lib/aos.js"></script>
+    <script src="/tools/assets/js/galley.js?ts=2"></script>
+    <script src="/tools/assets/js/index.js?ts=1"></script>
+
+    <!-- 动态资源JS -->
+    <th:block th:if="${context?.pageModules?.resource?.config?.jsList != null && !context?.pageModules?.resource?.config?.jsList.isEmpty()}">
+        <script th:each="jsUrl : ${context?.pageModules?.resource?.config?.jsList}"
+                th:src="${jsUrl}"
+                th:if="${jsUrl != null && !jsUrl.trim().isEmpty()}"></script>
+    </th:block>
+
+</div>
+<!-- /#wrapper -->
+</body>
+</html>
