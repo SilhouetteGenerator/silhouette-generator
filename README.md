@@ -4,6 +4,14 @@
 ![Free](https://img.shields.io/badge/License-Free-green?style=for-the-badge)
 ![GPT-4o](https://img.shields.io/badge/Powered%20by-GPT--4o-orange?style=for-the-badge)
 
+## 🌍 多语言版本 | Multi-Language Versions
+
+**选择您的语言 | Choose Your Language:**
+
+🇺🇸 [English](README.md) | 🇨🇳 [简体中文](readme-chinese.md) | 🇪🇸 [Español](readme-spanish.md) | 🇫🇷 [Français](readme-french.md) | 🇵🇹 [Português](readme-portuguese.md) | 🇮🇹 [Italiano](readme-italian.md) | 🇯🇵 [日本語](readme-japanese.md) | 🇹🇭 [ภาษาไทย](readme-thai.md) | 🇰🇷 [한국어](readme-korean.md) | 🇷🇺 [Русский](readme-russian.md)
+
+---
+
 **🌐 Live Demo: [https://silhouettegenerator.app](https://silhouettegenerator.app/index.html)**
 
 ![SilhouetteGenerator Screenshot](http://tomorrow-yes.oss-us-west-1.aliyuncs.com/system/silhouette/sucai/1753976688391.jpg)
