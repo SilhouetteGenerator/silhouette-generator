@@ -1,93 +1,85 @@
-# SilhouetteGenerator - AI-Powered Professional Silhouette Creation Tool
+# SilhouetteGenerator - AI驱动的专业剪影创建工具
 
-![SilhouetteGenerator Banner](https://img.shields.io/badge/SilhouetteGenerator-AI%20Powered-blue?style=for-the-badge)
-![Free](https://img.shields.io/badge/License-Free-green?style=for-the-badge)
-![GPT-4o](https://img.shields.io/badge/Powered%20by-GPT--4o-orange?style=for-the-badge)
+![SilhouetteGenerator Banner](https://img.shields.io/badge/SilhouetteGenerator-AI%20驱动-blue?style=for-the-badge)
+![免费](https://img.shields.io/badge/许可证-免费-green?style=for-the-badge)
+![GPT-4o](https://img.shields.io/badge/技术支持-GPT--4o-orange?style=for-the-badge)
 
-## 🌍 多语言版本 | Multi-Language Versions
+**🌐 在线演示: [https://silhouettegenerator.app](https://silhouettegenerator.app/index.html)**
 
-**选择您的语言 | Choose Your Language:**
+![SilhouetteGenerator截图](http://tomorrow-yes.oss-us-west-1.aliyuncs.com/system/silhouette/sucai/1753976688391.jpg)
+*SilhouetteGenerator网页界面展示直观设计和强大的AI功能*
 
-🇺🇸 [English](README.md) | 🇨🇳 [简体中文](readme-chinese.md) | 🇪🇸 [Español](readme-spanish.md) | 🇫🇷 [Français](readme-french.md) | 🇵🇹 [Português](readme-portuguese.md) | 🇮🇹 [Italiano](readme-italian.md) | 🇯🇵 [日本語](readme-japanese.md) | 🇹🇭 [ภาษาไทย](readme-thai.md) | 🇰🇷 [한국어](readme-korean.md) | 🇷🇺 [Русский](readme-russian.md)
+## 🎨 概述
 
----
+**SilhouetteGenerator** 是一款尖端的基于网页的应用程序，使用先进的AI技术将普通照片转换为令人惊叹的专业剪影。这个免费的剪影生成器利用OpenAI GPT-4o图像API的强大功能，只需几次点击即可提供卓越的结果。
 
-**🌐 Live Demo: [https://silhouettegenerator.app](https://silhouettegenerator.app/index.html)**
+剪影生成器平台作为创建高质量剪影图像最全面和用户友好的解决方案脱颖而出。无论您是艺术家、设计师、教育工作者还是内容创作者，我们的剪影生成器都能提供专业级结果，而无需传统图像编辑软件的复杂性。
 
-![SilhouetteGenerator Screenshot](http://tomorrow-yes.oss-us-west-1.aliyuncs.com/system/silhouette/sucai/1753976688391.jpg)
-*SilhouetteGenerator web interface showcasing the intuitive design and powerful AI capabilities*
+## ✨ 主要特性
 
-## 🎨 Overview
+### 🆓 **完全免费的专业AI生成**
+我们的剪影生成器完全免费提供专业级AI图像生成。与其他高级剪影工具不同，剪影生成器平台确保高质量剪影创建对每个人都是可及的。
 
-**SilhouetteGenerator** is a cutting-edge web-based application that transforms ordinary photos into stunning professional silhouettes using advanced AI technology. This free-to-use silhouettegenerator leverages the power of OpenAI's GPT-4o Image API to deliver exceptional results with just a few clicks.
+### 🎯 **双重细节级别**
+剪影生成器提供两种不同的质量选项：
+- **普通模式**：适合快速社交媒体内容和基本设计需求
+- **增强模式**：适用于专业印刷和商业用途的高级质量
 
-The silhouettegenerator platform stands out as the most comprehensive and user-friendly solution for creating high-quality silhouette images. Whether you're an artist, designer, educator, or content creator, our silhouettegenerator provides professional-grade results without the complexity of traditional image editing software.
+### ⚡ **一键生成与即时预览**
+体验我们剪影生成器简化工作流程的效率。只需上传、配置和生成 - 剪影生成器提供即时结果和实时预览功能。
 
-## ✨ Key Features
+### 🎨 **丰富的背景模板库**
+我们的剪影生成器包含39+专业设计背景模板的广泛集合：
+- **海洋系列**：sea39、sea23、sea24、sea25、sea26
+- **自然主题**：山脉、森林景观、日落地平线
+- **抽象设计**：几何图案、艺术渐变
+- **季节变化**：春、夏、秋、冬主题
 
-### 🆓 **Completely Free Professional AI Generation**
-Our silhouettegenerator offers professional-grade AI image generation at absolutely no cost. Unlike other premium silhouette tools, the silhouettegenerator platform ensures that high-quality silhouette creation remains accessible to everyone.
+### 📁 **多种输出格式支持**
+剪影生成器支持行业标准格式：
+- **JPG**：适合网页使用和社交媒体分享
+- **PNG**：适合需要透明度的设计
+- **WebP**：用于优化网页性能的现代格式
 
-### 🎯 **Dual Detail Levels**
-The silhouettegenerator provides two distinct quality options:
-- **Normal Mode**: Perfect for quick social media content and basic design needs
-- **Enhanced Mode**: Premium quality for professional printing and commercial use
+### 📤 **高级图像上传系统**
+我们的剪影生成器接受：
+- 文件大小最高20MB
+- 分辨率支持高达4096×4096像素
+- 拖放功能实现无缝工作流程
+- 批处理功能
 
-### ⚡ **One-Click Generation with Instant Preview**
-Experience the efficiency of our silhouettegenerator's streamlined workflow. Simply upload, configure, and generate - the silhouettegenerator delivers instant results with real-time preview functionality.
+### 🔄 **创意重试功能**
+剪影生成器的重试机制允许用户从同一源图像探索不同的创意可能性，确保每次都能获得完美结果。
 
-### 🎨 **Rich Background Template Library**
-Our silhouettegenerator includes an extensive collection of 39+ professionally designed background templates:
-- **Sea Collection**: sea39, sea23, sea24, sea25, sea26
-- **Nature Themes**: Mountain ranges, forest landscapes, sunset horizons
-- **Abstract Designs**: Geometric patterns, artistic gradients
-- **Seasonal Variants**: Spring, summer, autumn, winter themes
+## 🚀 如何使用SilhouetteGenerator
 
-### 📁 **Multiple Output Format Support**
-The silhouettegenerator supports industry-standard formats:
-- **JPG**: Perfect for web use and social media sharing
-- **PNG**: Ideal for designs requiring transparency
-- **WebP**: Modern format for optimized web performance
+### **步骤1：上传您的图像**
+通过上传您的原始照片开始您的剪影生成器之旅。剪影生成器界面支持点击浏览和拖放功能，让您轻松开始创意过程。
 
-### 📤 **Advanced Image Upload System**
-Our silhouettegenerator accepts:
-- File sizes up to 20MB
-- Resolution support up to 4096×4096 pixels
-- Drag-and-drop functionality for seamless workflow
-- Batch processing capabilities
+### **步骤2：配置设置**
+通过选择以下选项定制您的剪影生成器输出：
+- **背景模板**：从39+专业模板中选择
+- **细节级别**：选择普通或增强质量
+- **输出格式**：根据需要选择JPG、PNG或WebP
 
-### 🔄 **Creative Retry Function**
-The silhouettegenerator's retry mechanism allows users to explore different creative possibilities from the same source image, ensuring the perfect result every time.
+### **步骤3：生成和下载**
+点击生成按钮，观看剪影生成器使用先进的GPT-4o技术处理您的图像。预览您的结果并点击绿色下载按钮保存您的专业剪影。
 
-## 🚀 How to Use SilhouetteGenerator
+## 🛠 技术实现
 
-### **Step 1: Upload Your Image**
-Start your silhouettegenerator journey by uploading your original photo. The silhouettegenerator interface supports both click-to-browse and drag-and-drop functionality, making it effortless to begin your creative process.
+### **核心架构**
+剪影生成器使用现代网络技术构建，确保最佳性能和可靠性：
 
-### **Step 2: Configure Settings**
-Customize your silhouettegenerator output by selecting:
-- **Background Template**: Choose from 39+ professional templates
-- **Detail Level**: Select Normal or Enhanced quality
-- **Output Format**: Pick JPG, PNG, or WebP based on your needs
+- **前端框架**：响应式HTML5/CSS3/JavaScript架构
+- **AI集成**：与OpenAI GPT-4o图像API直接集成
+- **图像处理**：先进的客户端图像处理库
+- **文件处理**：支持多种格式和大文件的强大上传系统
 
-### **Step 3: Generate and Download**
-Click the generate button and watch as the silhouettegenerator processes your image using advanced GPT-4o technology. Preview your result and click the green download button to save your professional silhouette.
-
-## 🛠 Technical Implementation
-
-### **Core Architecture**
-The silhouettegenerator is built using modern web technologies to ensure optimal performance and reliability:
-
-- **Frontend Framework**: Responsive HTML5/CSS3/JavaScript architecture
-- **AI Integration**: Direct integration with OpenAI's GPT-4o Image API
-- **Image Processing**: Advanced client-side image manipulation libraries
-- **File Handling**: Robust upload system supporting multiple formats and large files
-
-### **GPT-4o Image API Integration**
-The silhouettegenerator's most powerful feature is its integration with GPT-4o Image API:
+### **GPT-4o图像API集成**
+剪影生成器最强大的功能是与GPT-4o图像API的集成：
 
 ```javascript
-// Core silhouettegenerator API integration
+// 核心剪影生成器API集成
 async function generateSilhouette(imageData, settings) {
   const apiRequest = {
     model: "gpt-4o",
@@ -101,85 +93,85 @@ async function generateSilhouette(imageData, settings) {
 }
 ```
 
-### **Background Template System**
-The silhouettegenerator manages an extensive template library through a modular system:
+### **背景模板系统**
+剪影生成器通过模块化系统管理广泛的模板库：
 
-- **Template Management**: Dynamic loading of background assets
-- **Preview Generation**: Real-time composition preview
-- **Customization Engine**: User-configurable template parameters
+- **模板管理**：背景资源的动态加载
+- **预览生成**：实时合成预览
+- **定制引擎**：用户可配置的模板参数
 
-### **Performance Optimization**
-Our silhouettegenerator implements several optimization strategies:
-- **Lazy Loading**: Templates and assets load on demand
-- **Caching System**: Frequently used templates are cached locally
-- **Compression**: Intelligent image compression without quality loss
-- **Progressive Loading**: Large images load progressively for better UX
+### **性能优化**
+我们的剪影生成器实现了几种优化策略：
+- **懒加载**：模板和资源按需加载
+- **缓存系统**：常用模板本地缓存
+- **压缩**：智能图像压缩而不损失质量
+- **渐进加载**：大图像渐进加载以获得更好的用户体验
 
-## 🎯 Use Cases and Applications
+## 🎯 用例和应用
 
-### **Silhouette Art Creation**
-Artists and designers use our silhouettegenerator to rapidly generate professional silhouette materials of people, animals, and landscapes. The silhouettegenerator's AI-powered detection ensures accurate edge detection and clean silhouette extraction.
+### **剪影艺术创作**
+艺术家和设计师使用我们的剪影生成器快速生成人物、动物和风景的专业剪影材料。剪影生成器的AI驱动检测确保准确的边缘检测和干净的剪影提取。
 
-### **Brand Logo Design**
-Business owners leverage the silhouettegenerator to create clean, powerful silhouette elements for brand identities. The silhouettegenerator's professional output quality makes it perfect for corporate branding projects.
+### **品牌标志设计**
+企业主利用剪影生成器为品牌标识创建干净、强大的剪影元素。剪影生成器的专业输出质量使其完美适用于企业品牌项目。
 
-### **Social Media Content Creation**
-Content creators rely on our silhouettegenerator to produce eye-catching silhouette-style avatars and graphics that stand out in social media feeds. The silhouettegenerator's variety of background templates ensures unique, engaging content.
+### **社交媒体内容创作**
+内容创作者依靠我们的剪影生成器制作引人注目的剪影风格头像和图形，在社交媒体信息流中脱颖而出。剪影生成器的多样化背景模板确保独特、引人入胜的内容。
 
-### **Educational Applications**
-Teachers utilize the silhouettegenerator to create visual aids for presentations and courseware. The silhouettegenerator's ease of use makes it perfect for educators who need quick, professional graphics.
+### **教育应用**
+教师利用剪影生成器为演示文稿和课件创建视觉辅助材料。剪影生成器的易用性使其完美适合需要快速、专业图形的教育工作者。
 
-### **Interior and Decorative Design**
-Interior designers employ our silhouettegenerator to generate silhouette pattern materials for wall decals, decorative paintings, and custom artwork. The silhouettegenerator's high-resolution output ensures crisp printing results.
+### **室内和装饰设计**
+室内设计师使用我们的剪影生成器生成墙贴、装饰画和定制艺术品的剪影图案材料。剪影生成器的高分辨率输出确保清晰的打印结果。
 
-### **Print and Marketing Materials**
-Marketing professionals use the silhouettegenerator to enhance the visual appeal of posters, flyers, business cards, and promotional materials. The silhouettegenerator's multiple format support ensures compatibility with all printing workflows.
+### **印刷和营销材料**
+营销专业人士使用剪影生成器增强海报、传单、名片和促销材料的视觉吸引力。剪影生成器的多格式支持确保与所有印刷工作流程的兼容性。
 
-## 🔧 Installation and Setup
+## 🔧 安装和设置
 
-### **Local Development**
-To run the silhouettegenerator locally:
+### **本地开发**
+要在本地运行剪影生成器：
 
 ```bash
-# Clone the silhouettegenerator repository
+# 克隆剪影生成器仓库
 git clone https://github.com/yourusername/silhouettegenerator.git
 
-# Navigate to silhouettegenerator directory
+# 导航到剪影生成器目录
 cd silhouettegenerator
 
-# Install dependencies
+# 安装依赖项
 npm install
 
-# Configure API keys (create .env file)
+# 配置API密钥（创建.env文件）
 echo "OPENAI_API_KEY=your_gpt4o_api_key" > .env
 
-# Start the silhouettegenerator development server
+# 启动剪影生成器开发服务器
 npm run dev
 ```
 
-### **Production Deployment**
-Deploy your silhouettegenerator instance:
+### **生产部署**
+部署您的剪影生成器实例：
 
 ```bash
-# Build the silhouettegenerator for production
+# 为生产构建剪影生成器
 npm run build
 
-# Deploy to your hosting platform
+# 部署到您的托管平台
 npm run deploy
 ```
 
-## 📊 API Reference
+## 📊 API参考
 
-### **Core SilhouetteGenerator Methods**
+### **核心SilhouetteGenerator方法**
 
 ```javascript
-// Initialize silhouettegenerator
+// 初始化剪影生成器
 const generator = new SilhouetteGenerator({
   apiKey: 'your-api-key',
   quality: 'enhanced'
 });
 
-// Generate silhouette
+// 生成剪影
 const result = await generator.createSilhouette({
   image: imageFile,
   template: 'sea39',
@@ -187,53 +179,53 @@ const result = await generator.createSilhouette({
 });
 ```
 
-## 🌟 Advanced Features
+## 🌟 高级功能
 
-The silhouettegenerator includes several advanced capabilities that set it apart from traditional silhouette tools:
+剪影生成器包含几个高级功能，使其区别于传统剪影工具：
 
-### **Intelligent Edge Detection**
-Our silhouettegenerator uses GPT-4o's advanced computer vision capabilities to accurately identify subject boundaries, even in complex images with challenging backgrounds.
+### **智能边缘检测**
+我们的剪影生成器使用GPT-4o的先进计算机视觉功能准确识别主体边界，即使在具有挑战性背景的复杂图像中也是如此。
 
-### **Contextual Background Matching**
-The silhouettegenerator analyzes the source image content to suggest the most appropriate background templates, streamlining the creative process.
+### **上下文背景匹配**
+剪影生成器分析源图像内容以建议最合适的背景模板，简化创意过程。
 
-### **Batch Processing Support**
-Process multiple images simultaneously with the silhouettegenerator's batch functionality, perfect for large projects and commercial applications.
+### **批处理支持**
+使用剪影生成器的批处理功能同时处理多个图像，完美适用于大型项目和商业应用。
 
-## 🤝 Contributing
+## 🤝 贡献
 
-We welcome contributions to the silhouettegenerator project! Whether you're fixing bugs, adding features, or improving documentation, your help makes the silhouettegenerator better for everyone.
+我们欢迎对剪影生成器项目的贡献！无论您是修复错误、添加功能还是改进文档，您的帮助都会让剪影生成器对每个人都更好。
 
-### **Development Guidelines**
-- Follow our silhouettegenerator coding standards
-- Write comprehensive tests for new features
-- Update documentation for any silhouettegenerator changes
-- Ensure backward compatibility with existing silhouettegenerator APIs
+### **开发指南**
+- 遵循我们的剪影生成器编码标准
+- 为新功能编写全面测试
+- 更新任何剪影生成器更改的文档
+- 确保与现有剪影生成器API的向后兼容性
 
-## 📄 License
+## 📄 许可证
 
-This silhouettegenerator project is released under the MIT License, making it free for both personal and commercial use. The silhouettegenerator's open-source nature encourages innovation and community collaboration.
+此剪影生成器项目在MIT许可证下发布，使其免费用于个人和商业用途。剪影生成器的开源性质鼓励创新和社区协作。
 
-## 🆘 Support
+## 🆘 支持
 
-Need help with the silhouettegenerator? We're here to assist:
+需要剪影生成器的帮助？我们在这里协助：
 
-- **Documentation**: Comprehensive silhouettegenerator guides and tutorials
-- **Community Forum**: Connect with other silhouettegenerator users
-- **Issue Tracker**: Report bugs and request silhouettegenerator features
-- **Email Support**: Direct assistance for silhouettegenerator implementation
+- **文档**：全面的剪影生成器指南和教程
+- **社区论坛**：与其他剪影生成器用户连接
+- **问题跟踪**：报告错误并请求剪影生成器功能
+- **电子邮件支持**：剪影生成器实现的直接协助
 
-## 🚀 Future Roadmap
+## 🚀 未来路线图
 
-The silhouettegenerator development team is continuously working on exciting new features:
+剪影生成器开发团队正在持续开发令人兴奋的新功能：
 
-- **Video Silhouette Support**: Extend silhouettegenerator capabilities to video content
-- **API Integration**: RESTful API for silhouettegenerator integration
-- **Mobile App**: Native mobile silhouettegenerator applications
-- **Advanced AI Models**: Integration with next-generation AI for even better silhouettegenerator results
+- **视频剪影支持**：将剪影生成器功能扩展到视频内容
+- **API集成**：用于剪影生成器集成的RESTful API
+- **移动应用**：原生移动剪影生成器应用程序
+- **高级AI模型**：与下一代AI集成以获得更好的剪影生成器结果
 
 ---
 
-**Ready to transform your images into stunning silhouettes?** Try our silhouettegenerator today and experience the power of AI-driven creativity. The silhouettegenerator is your gateway to professional-quality silhouette art, accessible to creators of all skill levels.
+**准备好将您的图像转换为令人惊叹的剪影了吗？** 今天就试试我们的剪影生成器，体验AI驱动创造力的力量。剪影生成器是您通往专业质量剪影艺术的门户，适用于所有技能水平的创作者。
 
-**Star this repository** if you find our silhouettegenerator useful, and don't forget to share it with fellow creators who could benefit from this powerful silhouettegenerator tool!
+**如果您觉得我们的剪影生成器有用，请为此仓库加星**，并且不要忘记与可能从这个强大的剪影生成器工具中受益的其他创作者分享！
