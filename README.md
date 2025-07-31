@@ -4,6 +4,11 @@
 ![Free](https://img.shields.io/badge/License-Free-green?style=for-the-badge)
 ![GPT-4o](https://img.shields.io/badge/Powered%20by-GPT--4o-orange?style=for-the-badge)
 
+**🌐 Live Demo: [https://silhouettegenerator.app](https://silhouettegenerator.app/index.html)**
+
+![SilhouetteGenerator Screenshot](http://tomorrow-yes.oss-us-west-1.aliyuncs.com/system/silhouette/sucai/1753976688391.jpg)
+*SilhouetteGenerator web interface showcasing the intuitive design and powerful AI capabilities*
+
 ## 🎨 Overview
 
 **SilhouetteGenerator** is a cutting-edge web-based application that transforms ordinary photos into stunning professional silhouettes using advanced AI technology. This free-to-use silhouettegenerator leverages the power of OpenAI's GPT-4o Image API to deliver exceptional results with just a few clicks.
